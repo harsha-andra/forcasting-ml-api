@@ -1,7 +1,7 @@
 import streamlit as st
 import requests
 
-API_URL = "https://forcasting-ml-api.onrender.com"  # Change to your deployed URL when ready
+API_URL = "https://forcasting-ml-api.onrender.com/predict"  # Change to your deployed URL when ready
 
 st.title("📈 Forecasting ML API Demo")
 
