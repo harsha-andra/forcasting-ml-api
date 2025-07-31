@@ -6,10 +6,14 @@ import pandas as pd
 from src.model import ForecastingModel
 import json
 import os
+from pathlib import Path
 
 # Safe path logic
-BASE_DIR = os.path.dirname(os.path.dirname(__file__))  # goes up to project root
-embedding_path =r"C:\Users\harsh\OneDrive\Desktop\projects\forecasting\src\models\embedding_sizes.json"
+BASE_DIR = Path(__file__).resolve().parent.parent
+embedding_path = BASE_DIR / "src" / "models" / "embedding_sizes.json"
+print(f"🔍 Looking for: {embedding_path}")
+
+
 
 
 if not os.path.exists(embedding_path):
@@ -35,7 +39,7 @@ class ForecastInput(BaseModel):
     rolling_mean_28: float
 
 # Load model
-model_path = r"C:\Users\harsh\OneDrive\Desktop\projects\forecasting\src\models\forecasting_model.pth"
+model_path = BASE_DIR / "src" / "models" / "forecasting_model.pth"
 model = ForecastingModel(embedding_sizes, num_numerical_features=5)
 model.load_state_dict(torch.load(model_path, map_location="cpu"))
 model.eval()
