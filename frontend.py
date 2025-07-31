@@ -1,6 +1,19 @@
 import streamlit as st
 import requests
 
+import os
+os.environ["STREAMLIT_SERVER_HEADLESS"] = "true"
+os.environ["STREAMLIT_SERVER_ENABLECORS"] = "false"
+os.environ["STREAMLIT_SERVER_ENABLEXSRS"] = "false"
+os.environ["STREAMLIT_SERVER_ADDRESS"] = "0.0.0.0"
+
+
+
+
+
+
+
+
 API_URL = "https://forcasting-ml-api.onrender.com/predict"  # Change to your deployed URL when ready
 
 st.title("📈 Forecasting ML API Demo")
